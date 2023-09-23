@@ -14,45 +14,52 @@ body {
 }
 
 .container {
-    border: 5px solid rgb(47, 0, 255);
+    border: 10px solid rgb(253, 253, 253);
+    box-shadow: 0px 0px 5px 5px black;
     width: 350px;
     height: 450px;
     box-sizing: border-box;
     display: flex;
-    background-color: rgb(250, 227, 197);
     flex-direction: column;
+    border-radius: 8px;
+    background-color: rgb(252, 236, 215);
 }
 
 .display {
-    border: 5px solid rgb(238, 255, 0);
+    /* border: 5px solid rgb(238, 255, 0); */
     width: 100%;
     box-sizing: border-box;
     height: 20%;
 }
 
 .screen {
-    border: 5px solid rgb(0, 255, 119);
+    border: 2px solid black;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(252, 236, 215);
 }
 
 .top-row {
     /* border: 5px solid rgb(0, 255, 251); */
-    border-top: 5px solid rgb(0, 255, 251);
-    border-left: 5px solid rgb(0, 255, 251);
-    border-right: 5px solid rgb(0, 255, 251);
+    border-top: 0px solid rgb(0, 0, 0);
+    border-left: 2px solid rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     display: flex;
     height: 16%;
 }
 
 .top-row>* {
-    border: 1px solid black;
+    border: 2px solid black;
+    background-color: rgb(245, 177, 245);
     width: 25%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 
 /* .c {}
@@ -65,16 +72,17 @@ body {
 
 .bottom-half {
     /* border: 5px solid rgb(0, 255, 251); */
-    border-bottom: 5px solid rgb(0, 255, 251);
-    border-left: 5px solid rgb(0, 255, 251);
-    border-right: 5px solid rgb(0, 255, 251);
+    border-bottom: 2px solid rgb(0, 0, 0);
+    border-left: 2px solid rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     height: 64%;
 }
 
 .keys {
-    /* border: 5px solid black; */
+    border-top: 1px solid black;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -83,7 +91,7 @@ body {
 }
 
 .keys>* {
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: lightblue;
     box-sizing: border-box;
     width: 25%;
@@ -91,6 +99,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 
 .keys>.negative,
@@ -100,22 +109,6 @@ body {
 
 .operation {
     background-color: yellow;
-}
-
-.operations {
-    /* border-bottom: 5px solid black; */
-    /* border-top: 5px solid black; */
-    /* border-right: 5px solid black; */
-    box-sizing: border-box;
-    width: 25%;
-}
-
-.operations>* {
-    border: 1px solid black;
-    border-right: 0px;
-    height: 25%;
-    display: flex;
-    flex-direction: wrap;
 }
 
 /* .seven{}
