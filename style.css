@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "Roboto", "sans-serif";
 }
 
 body {
@@ -73,11 +74,15 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .keys>.negative,
 .decimal {
-    background-color: rgb(207, 207, 228);
+    background-color: rgb(139, 139, 252);
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .keys .top {
@@ -86,9 +91,14 @@ body {
 
 button:active {
     transform: translateY(2px);
-    border-top: 2px solid black;
+    border-top: 4px solid black;
 }
 
 .operation {
     background-color: yellow;
+    font-size: 22px;
+}
+
+.operation-pressed {
+    background-color: rgb(173, 173, 0);
 }
