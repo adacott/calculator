@@ -43,10 +43,6 @@ body {
     background-color: rgb(252, 236, 215);
 }
 
-.keys .top {
-    background-color: rgb(245, 177, 245);
-}
-
 .bottom-half {
     /* border: 5px solid rgb(0, 255, 251); */
     /* border-bottom: 2px solid rgb(0, 0, 0); */
@@ -82,6 +78,15 @@ body {
 .keys>.negative,
 .decimal {
     background-color: rgb(207, 207, 228);
+}
+
+.keys .top {
+    background-color: rgb(245, 177, 245);
+}
+
+button:active {
+    transform: translateY(2px);
+    border-top: 2px solid black;
 }
 
 .operation {
