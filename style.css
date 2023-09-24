@@ -42,6 +42,12 @@ body {
     box-sizing: border-box;
     border-radius: 5px;
     background-color: rgb(252, 236, 215);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    font-size: 65px;
+    font-family: "Roboto", sans-serif;
 }
 
 .bottom-half {

@@ -1,17 +1,20 @@
 let num1, num2, operator;
+const keys = document.querySelectorAll("button");
+const screen = document.querySelector(".screen");
+console.log(screen.innerHTML);
+
+function displayKey() {
+    console.log(this.innerHTML)
+    screen.innerHTML = `${this.innerHTML}`;
+}
 
 function operate() {
 
 }
 
-const keys = document.querySelectorAll("button");
-
-console.log(keys);
-
-keys.forEach(key => key.addEventListener("click", function (e) {
-    console.log(this.innerHTML);
-}))
+keys.forEach(key => key.addEventListener("click", displayKey));
 
 // The code below will print the value of the key when pressed.
-console.log(this.innerHTML);
-console.log(this.innertext);
+// console.log(this.innerHTML);
+// console.log(this.innertext);
+
