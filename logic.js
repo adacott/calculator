@@ -4,8 +4,8 @@ const operators = document.querySelectorAll(".operation");
 const calculate = document.querySelector(".equals");
 const screen = document.querySelector(".screen");
 const back = document.querySelector(".back");
-// const clear
 // const decimal
+// const clear
 console.log(screen.innerHTML);
 
 function round(num) {
@@ -18,9 +18,6 @@ function displayNum() {
         num1 += `${this.innerHTML}`;
         if (this.innerHTML == "+/-") {
             num1 = parseInt(num1) * -1;
-        }
-        if (this.innerHTML == "&lt;=") {
-            console.log("You pressed back")
         }
         screen.innerHTML = `${num1}`;
     }
@@ -91,8 +88,24 @@ function calculateResult() {
     num1 = "", num2 = "", operator = "";
 }
 
+function backSpace() {
+    if (!op_toggle) {
+        str = screen.innerHTML;
+        str = str.slice(0, -1);
+        screen.innerHTML = `${str}`;
+        num1 = parseInt(str);
+    }
+    else if (op_toggle) {
+        str = screen.innerHTML;
+        str = str.slice(0, -1);
+        screen.innerHTML = `${str}`;
+        num2 = parseInt(str);
+    }
+}
+
 
 nums.forEach(numb => numb.addEventListener("click", displayNum));
 operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
+back.addEventListener("click", backSpace);
 
