@@ -28,16 +28,19 @@ body {
 }
 
 .display {
-    /* border: 5px solid rgb(238, 255, 0); */
+    border: 2px solid black;
     width: 100%;
     box-sizing: border-box;
-    height: 20%;
+    border-radius: 5px;
+    background-color: rgb(252, 236, 215);
+    display: flex;
+    justify-content: end;
 }
 
 .screen {
-    border: 2px solid black;
+    /* border: 2px solid rgb(210, 8, 8); */
     /* border-bottom: 5px solid black; */
-    width: 100%;
+    width: 90.5%;
     height: 100%;
     box-sizing: border-box;
     border-radius: 5px;
@@ -48,6 +51,9 @@ body {
     padding: 5px;
     font-size: 65px;
     font-family: "Roboto", sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .bottom-half {

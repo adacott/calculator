@@ -121,3 +121,5 @@ operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
 back.addEventListener("click", backSpace);
 
+// TODO: Add support for decimal key, clear button, and percent button. Prevent numbers from
+// overflowing off the side of the calculator if someone spams numbers
