@@ -16,14 +16,44 @@ function displayKey() {
 }
 
 function operate() {
+    if (this.innerHTML.includes("+")) {
+        console.log("you're adding");
+        operator = "add";
+        console.log(`${operator}`);
+    }
+    else if (this.innerHTML.includes("-")) {
+        console.log("you're subtracting");
+        operator = "subtract";
+        console.log(`${operator}`);
+    }
+    else if (this.innerHTML.includes("*")) {
+        console.log("you're multiplying");
+        operator = "multiply";
+        console.log(`${operator}`);
+    }
+    else if (this.innerHTML.includes("/")) {
+        console.log("you're dividing");
+        operator = "divide";
+        console.log(`${operator}`);
+    }
+
+
     switch (operator) {
         case "add":
+            op_toggle = true;
+
             break;
         case "subtract":
+            op_toggle = true;
+
             break;
         case "multiply":
+            op_toggle = true;
+
             break;
         case "divide":
+            op_toggle = true;
+
             break;
     }
 }
