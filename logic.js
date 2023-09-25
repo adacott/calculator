@@ -101,17 +101,19 @@ function calculateResult() {
 }
 
 function backSpace() {
-    if (!op_toggle) {
-        str = screen.innerHTML;
-        str = str.slice(0, -1);
-        screen.innerHTML = `${str}`;
-        num1 = parseInt(str);
-    }
-    else if (op_toggle) {
-        str = screen.innerHTML;
-        str = str.slice(0, -1);
-        screen.innerHTML = `${str}`;
-        num2 = parseInt(str);
+    if (screen.innerHTML.length > 1) {
+        if (!op_toggle) {
+            str = screen.innerHTML;
+            str = str.slice(0, -1);
+            screen.innerHTML = `${str}`;
+            num1 = parseInt(str);
+        }
+        else if (op_toggle) {
+            str = screen.innerHTML;
+            str = str.slice(0, -1);
+            screen.innerHTML = `${str}`;
+            num2 = parseInt(str);
+        }
     }
 }
 
@@ -121,5 +123,13 @@ operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
 back.addEventListener("click", backSpace);
 
-// TODO: Add support for decimal key, clear button, and percent button. Prevent numbers from
-// overflowing off the side of the calculator if someone spams numbers
+// TODO: Add support for decimal key, clear button, and percent button. 
+// Prevent numbers from overflowing off the side of the calculator if someone spams numbers:
+//  This can be done by detecting the length of the screen.innerHTML, and if its greater than some
+//  threshold, n, remove all event listeners, or to add a conditional statement to my displayNum
+//  function that will scan for length and prevent this. 
+//
+// If backspace is pressed when only 1 digit is shown, set screen to 0
+//
+// If the negative button is pressed on zero, or pressed before a number is pressed, do nothing,
+// or at least don't return an error.
