@@ -9,7 +9,7 @@ const back = document.querySelector(".back");
 console.log(screen.innerHTML);
 
 function round(num) {
-    num = Math.round(num * 100) / 100;
+    num = Math.round(num * 1000) / 1000;
     return num;
 }
 
@@ -67,17 +67,19 @@ function calculateResult() {
     switch (operator) {
         case "add":
             op_toggle = false;
-            result = parseInt(num1) + parseInt(num2);
+            result = parseFloat(num1) + parseFloat(num2);
+            result = round(result);
             screen.innerHTML = result;
             break;
         case "subtract":
             op_toggle = false;
-            result = parseInt(num1) - parseInt(num2);
+            result = parseFloat(num1) - parseFloat(num2);
+            result = round(result);
             screen.innerHTML = result;
             break;
         case "multiply":
             op_toggle = false;
-            result = parseInt(num1) * parseInt(num2);
+            result = parseFloat(num1) * parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
             break;
@@ -87,10 +89,13 @@ function calculateResult() {
                 screen.innerHTML = "Rlly?";
                 break;
             }
-            result = parseInt(num1) / parseInt(num2);
+            result = parseFloat(num1) / parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
             break;
+    }
+    if (num1 == "") {
+        screen.innerHTML = "0";
     }
     num1 = "", num2 = "", operator = "";
 }
