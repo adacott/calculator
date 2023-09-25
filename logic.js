@@ -27,11 +27,20 @@ function displayNum() {
             num2 = parseInt(num2) * -1;
         }
         screen.innerHTML = `${num2}`;
+        operators.forEach(op => op.classList.remove("pressed"));
     }
 }
 
 function selectOperator() {
     operators.forEach(op => op.classList.remove("pressed"));
+
+    // Allows chaining operations
+    if (operator != "" && num2 != "") {
+        calculateResult();
+        num1 = result;
+        result = "";
+    }
+
     if (this.innerHTML.includes("+") && num1 != "") {
         operator = "add";
         this.classList.add("pressed");
@@ -83,8 +92,6 @@ function calculateResult() {
             screen.innerHTML = result;
             break;
     }
-
-    operators.forEach(op => op.classList.remove("pressed"));
     num1 = "", num2 = "", operator = "";
 }
 
