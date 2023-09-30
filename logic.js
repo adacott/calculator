@@ -14,21 +14,26 @@ function round(num) {
 }
 
 function displayNum() {
-    if (!op_toggle) {
-        num1 += `${this.innerHTML}`;
-        if (this.innerHTML == "+/-" && !screen.innerHTML.includes("0")) {
-            num1 = parseInt(num1) * -1;
+    if (screen.innerHTML.length < 8) { // limit the amount of numbers that can be input to the screen
+        if (!op_toggle) {
+            num1 += `${this.innerHTML}`;
+            if (this.innerHTML == "+/-" && screen.innerHTML == "0") {
+                num1 = "ERROR";
+            }
+            else if (this.innerHTML == "+/-") {
+                num1 = parseInt(num1) * -1;
+            }
+            screen.innerHTML = `${num1}`;
         }
-        screen.innerHTML = `${num1}`;
-    }
-    else if (op_toggle) {
-        screen.innerHTML = "";
-        num2 += `${this.innerHTML}`;
-        if (this.innerHTML == "+/-") {
-            num2 = parseInt(num2) * -1;
+        else if (op_toggle) {
+            screen.innerHTML = "";
+            num2 += `${this.innerHTML}`;
+            if (this.innerHTML == "+/-") {
+                num2 = parseInt(num2) * -1;
+            }
+            screen.innerHTML = `${num2}`;
+            operators.forEach(op => op.classList.remove("pressed"));
         }
-        screen.innerHTML = `${num2}`;
-        operators.forEach(op => op.classList.remove("pressed"));
     }
 }
 
@@ -179,13 +184,8 @@ decimal.addEventListener("click", makeDecimal);
 
 
 // TODO:
-// Prevent numbers from overflowing off the side of the calculator if someone spams numbers:
-//  This can be done by detecting the length of the screen.innerHTML, and if its greater than some
-//  threshold, n, remove all event listeners, or to add a conditional statement to my displayNum
-//  function that will scan for length and prevent this. 
-// 
 // If the negative button is pressed on zero, or pressed before a number is pressed, do nothing,
-// or at least don't return an error.
+// or at least return an error so they know not to do that
 //
 // Is an error where if you press an operation, but don't press any numbers for num2, then click
 // equals, it erases the operation and num1, which I do not want it to do.
