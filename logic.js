@@ -16,7 +16,7 @@ function round(num) {
 function displayNum() {
     if (!op_toggle) {
         num1 += `${this.innerHTML}`;
-        if (this.innerHTML == "+/-") {
+        if (this.innerHTML == "+/-" && !screen.innerHTML.includes("0")) {
             num1 = parseInt(num1) * -1;
         }
         screen.innerHTML = `${num1}`;
@@ -90,42 +90,42 @@ function calculateResult() {
             result = parseFloat(num1) + parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
+            num1 = "", num2 = "", operator = "";
             break;
         case "subtract":
             op_toggle = false;
             result = parseFloat(num1) - parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
+            num1 = "", num2 = "", operator = "";
             break;
         case "multiply":
             op_toggle = false;
             result = parseFloat(num1) * parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
+            num1 = "", num2 = "", operator = "";
             break;
         case "divide":
             op_toggle = false;
-            if (num1 == 0) {
+            if (num2 == 0) {
                 screen.innerHTML = "Rlly?";
                 break;
             }
             result = parseFloat(num1) / parseFloat(num2);
             result = round(result);
             screen.innerHTML = result;
+            num1 = "", num2 = "", operator = "";
             break;
     }
-    if (num1 == "") {
-        screen.innerHTML = "0";
-    }
-    num1 = "", num2 = "", operator = "";
 }
 
 function makePercentage() {
-    if (!op_toggle) {
+    if (!op_toggle && !num1 == "") {
         num1 = num1 / 100;
         screen.innerHTML = `${num1}`;
     }
-    else if (op_toggle) {
+    else if (op_toggle && !num2 == "") {
         num2 = num2 / 100;
         screen.innerHTML = `${num2}`;
     }
@@ -183,5 +183,5 @@ decimal.addEventListener("click", makeDecimal);
 // If the negative button is pressed on zero, or pressed before a number is pressed, do nothing,
 // or at least don't return an error.
 //
-// Is an error where when you have a number, press equals, then click an operation, choose your
-// operation and choose your second option, it doesn't work
+// Is an error where if you press an operation, but don't press any numbers for num2, then click
+// equals, it erases the operation and num1, which I do not want it to do.
