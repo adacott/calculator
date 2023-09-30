@@ -6,9 +6,7 @@ const screen = document.querySelector(".screen");
 const back = document.querySelector(".back");
 const clear = document.querySelector(".c");
 const percent = document.querySelector(".percent");
-// const decimal
-// const clear
-console.log(screen.innerHTML);
+const decimal = document.querySelector(".decimal");
 
 function round(num) {
     num = Math.round(num * 1000) / 1000;
@@ -21,18 +19,35 @@ function displayNum() {
         if (this.innerHTML == "+/-") {
             num1 = parseInt(num1) * -1;
         }
-        // else if (this.innerHTML == "+/-" && screen.innerHTML.includes("0")) {
-        //     num1 = 0;
-        // }
         screen.innerHTML = `${num1}`;
     }
     else if (op_toggle) {
+        screen.innerHTML = "";
         num2 += `${this.innerHTML}`;
         if (this.innerHTML == "+/-") {
             num2 = parseInt(num2) * -1;
         }
         screen.innerHTML = `${num2}`;
         operators.forEach(op => op.classList.remove("pressed"));
+    }
+}
+
+function makeDecimal() {
+    if (!op_toggle) {
+        if (!screen.innerHTML.includes(".")) {
+            screen.innerHTML += ".";
+            num1 = screen.innerHTML;
+        }
+    }
+    else if (op_toggle) {
+        if (!screen.innerHTML.includes(".") && num2 == "") {
+            screen.innerHTML = "0.";
+            num2 = screen.innerHTML;
+        }
+        else if (!screen.innerHTML.includes(".") && !num2 == "") {
+            screen.innerHTML += ".";
+            num2 = screen.innerHTML;
+        }
     }
 }
 
@@ -105,7 +120,7 @@ function calculateResult() {
     num1 = "", num2 = "", operator = "";
 }
 
-function makeDecimal() {
+function makePercentage() {
     if (!op_toggle) {
         num1 = num1 / 100;
         screen.innerHTML = `${num1}`;
@@ -147,7 +162,6 @@ function clearAll() {
     num1 = "", num2 = "", op_toggle = false, operator = "", result = "";
     screen.innerHTML = 0;
     operators.forEach(op => op.classList.remove("pressed"));
-    // console.log(this);
 }
 
 
@@ -156,7 +170,8 @@ operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
 back.addEventListener("click", backSpace);
 clear.addEventListener("click", clearAll);
-percent.addEventListener("click", makeDecimal);
+percent.addEventListener("click", makePercentage);
+decimal.addEventListener("click", makeDecimal);
 
 
 // TODO: Add support for decimal key, and percent button. 
