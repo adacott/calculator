@@ -93,39 +93,41 @@ function selectOperator() {
 }
 
 function calculateResult() {
-    switch (operator) {
-        case "add":
-            op_toggle = false;
-            result = parseFloat(num1) + parseFloat(num2);
-            result = round(result);
-            screen.innerHTML = result;
-            num1 = "", num2 = "", operator = "";
-            break;
-        case "subtract":
-            op_toggle = false;
-            result = parseFloat(num1) - parseFloat(num2);
-            result = round(result);
-            screen.innerHTML = result;
-            num1 = "", num2 = "", operator = "";
-            break;
-        case "multiply":
-            op_toggle = false;
-            result = parseFloat(num1) * parseFloat(num2);
-            result = round(result);
-            screen.innerHTML = result;
-            num1 = "", num2 = "", operator = "";
-            break;
-        case "divide":
-            op_toggle = false;
-            if (num2 == 0) {
-                screen.innerHTML = "Rlly?";
+    if (!num2 == "") {
+        switch (operator) {
+            case "add":
+                op_toggle = false;
+                result = parseFloat(num1) + parseFloat(num2);
+                result = round(result);
+                screen.innerHTML = result;
+                num1 = "", num2 = "", operator = "";
                 break;
-            }
-            result = parseFloat(num1) / parseFloat(num2);
-            result = round(result);
-            screen.innerHTML = result;
-            num1 = "", num2 = "", operator = "";
-            break;
+            case "subtract":
+                op_toggle = false;
+                result = parseFloat(num1) - parseFloat(num2);
+                result = round(result);
+                screen.innerHTML = result;
+                num1 = "", num2 = "", operator = "";
+                break;
+            case "multiply":
+                op_toggle = false;
+                result = parseFloat(num1) * parseFloat(num2);
+                result = round(result);
+                screen.innerHTML = result;
+                num1 = "", num2 = "", operator = "";
+                break;
+            case "divide":
+                op_toggle = false;
+                if (num2 == 0) {
+                    screen.innerHTML = "Rlly?";
+                    break;
+                }
+                result = parseFloat(num1) / parseFloat(num2);
+                result = round(result);
+                screen.innerHTML = result;
+                num1 = "", num2 = "", operator = "";
+                break;
+        }
     }
 }
 
@@ -181,11 +183,3 @@ back.addEventListener("click", backSpace);
 clear.addEventListener("click", clearAll);
 percent.addEventListener("click", makePercentage);
 decimal.addEventListener("click", makeDecimal);
-
-
-// TODO:
-// If the negative button is pressed on zero, or pressed before a number is pressed, do nothing,
-// or at least return an error so they know not to do that
-//
-// Is an error where if you press an operation, but don't press any numbers for num2, then click
-// equals, it erases the operation and num1, which I do not want it to do.

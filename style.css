@@ -112,6 +112,10 @@ button:active {
     font-size: 22px;
 }
 
+.equals {
+    background-color: yellow;
+}
+
 .pressed {
     background-color: rgb(173, 173, 0);
 }
