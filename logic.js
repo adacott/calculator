@@ -40,12 +40,16 @@ function makeDecimal() {
         }
     }
     else if (op_toggle) {
-        if (!screen.innerHTML.includes(".") && num2 == "") {
+        if (!screen.innerHTML.includes(".") && num2 == "") { // if no decimal and num 2 is empty
             screen.innerHTML = "0.";
             num2 = screen.innerHTML;
         }
-        else if (!screen.innerHTML.includes(".") && !num2 == "") {
+        else if (!screen.innerHTML.includes(".") && !num2 == "") { // if no decimal and num2 is not empty
             screen.innerHTML += ".";
+            num2 = screen.innerHTML;
+        }
+        else if (!num1 == "" && num2 == "") { // for chaining operations together
+            screen.innerHTML = "0.";
             num2 = screen.innerHTML;
         }
     }
@@ -174,7 +178,7 @@ percent.addEventListener("click", makePercentage);
 decimal.addEventListener("click", makeDecimal);
 
 
-// TODO: Add support for decimal key, and percent button. 
+// TODO:
 // Prevent numbers from overflowing off the side of the calculator if someone spams numbers:
 //  This can be done by detecting the length of the screen.innerHTML, and if its greater than some
 //  threshold, n, remove all event listeners, or to add a conditional statement to my displayNum
