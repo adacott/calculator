@@ -4,6 +4,7 @@ const operators = document.querySelectorAll(".operation");
 const calculate = document.querySelector(".equals");
 const screen = document.querySelector(".screen");
 const back = document.querySelector(".back");
+const clear = document.querySelector(".c");
 // const decimal
 // const clear
 console.log(screen.innerHTML);
@@ -19,6 +20,9 @@ function displayNum() {
         if (this.innerHTML == "+/-") {
             num1 = parseInt(num1) * -1;
         }
+        // else if (this.innerHTML == "+/-" && screen.innerHTML.includes("0")) {
+        //     num1 = 0;
+        // }
         screen.innerHTML = `${num1}`;
     }
     else if (op_toggle) {
@@ -102,9 +106,6 @@ function calculateResult() {
 
 function backSpace() {
     if (screen.innerHTML.length == 1) {
-        // str = screen.innerHTML;
-        // str = str.slice(0, -1);
-        // screen.innerHTML = `${str}`;
         screen.innerHTML = 0;
         if (!op_toggle) {
             num1 = "";
@@ -130,19 +131,29 @@ function backSpace() {
 
 }
 
+function clearAll() {
+    num1 = "", num2 = "", op_toggle = false, operator = "", result = "";
+    screen.innerHTML = 0;
+    operators.forEach(op => op.classList.remove("pressed"));
+    // console.log(this);
+}
+
 
 nums.forEach(numb => numb.addEventListener("click", displayNum));
 operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
 back.addEventListener("click", backSpace);
+clear.addEventListener("click", clearAll);
+
 
 // TODO: Add support for decimal key, clear button, and percent button. 
 // Prevent numbers from overflowing off the side of the calculator if someone spams numbers:
 //  This can be done by detecting the length of the screen.innerHTML, and if its greater than some
 //  threshold, n, remove all event listeners, or to add a conditional statement to my displayNum
 //  function that will scan for length and prevent this. 
-//
-// If backspace is pressed when only 1 digit is shown, set screen to 0
-//
+// 
 // If the negative button is pressed on zero, or pressed before a number is pressed, do nothing,
 // or at least don't return an error.
+//
+// Is an error where when you have a number, press equals, then click an operation, choose your
+// operation and choose your second option, it doesn't work
