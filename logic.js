@@ -101,7 +101,19 @@ function calculateResult() {
 }
 
 function backSpace() {
-    if (screen.innerHTML.length > 1) {
+    if (screen.innerHTML.length == 1) {
+        // str = screen.innerHTML;
+        // str = str.slice(0, -1);
+        // screen.innerHTML = `${str}`;
+        screen.innerHTML = 0;
+        if (!op_toggle) {
+            num1 = "";
+        }
+        else if (op_toggle) {
+            num2 = "";
+        }
+    }
+    else if (screen.innerHTML.length > 1) {
         if (!op_toggle) {
             str = screen.innerHTML;
             str = str.slice(0, -1);
@@ -115,6 +127,7 @@ function backSpace() {
             num2 = parseInt(str);
         }
     }
+
 }
 
 
