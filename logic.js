@@ -5,6 +5,7 @@ const calculate = document.querySelector(".equals");
 const screen = document.querySelector(".screen");
 const back = document.querySelector(".back");
 const clear = document.querySelector(".c");
+const percent = document.querySelector(".percent");
 // const decimal
 // const clear
 console.log(screen.innerHTML);
@@ -104,6 +105,17 @@ function calculateResult() {
     num1 = "", num2 = "", operator = "";
 }
 
+function makeDecimal() {
+    if (!op_toggle) {
+        num1 = num1 / 100;
+        screen.innerHTML = `${num1}`;
+    }
+    else if (op_toggle) {
+        num2 = num2 / 100;
+        screen.innerHTML = `${num2}`;
+    }
+}
+
 function backSpace() {
     if (screen.innerHTML.length == 1) {
         screen.innerHTML = 0;
@@ -144,9 +156,10 @@ operators.forEach(op => op.addEventListener("click", selectOperator));
 calculate.addEventListener("click", calculateResult);
 back.addEventListener("click", backSpace);
 clear.addEventListener("click", clearAll);
+percent.addEventListener("click", makeDecimal);
 
 
-// TODO: Add support for decimal key, clear button, and percent button. 
+// TODO: Add support for decimal key, and percent button. 
 // Prevent numbers from overflowing off the side of the calculator if someone spams numbers:
 //  This can be done by detecting the length of the screen.innerHTML, and if its greater than some
 //  threshold, n, remove all event listeners, or to add a conditional statement to my displayNum
