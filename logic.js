@@ -183,3 +183,7 @@ back.addEventListener("click", backSpace);
 clear.addEventListener("click", clearAll);
 percent.addEventListener("click", makePercentage);
 decimal.addEventListener("click", makeDecimal);
+
+// You can also do event listeners like this and it works the same way
+// decimal.onclick = makeDecimal;
+// decimal.onmouseover = makeDecimal;
